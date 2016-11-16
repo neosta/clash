@@ -17,7 +17,7 @@ $(document).ready(function(){
 
     $('.rp-select').click(function(){
         if($('.gen-area').hasClass('area-disabled')) {
-            sweetAlert("Error", "Please Choose your Device", "error");
+            sweetAlert("Error", "Please connect your account.", "error");
         } else {
             fixRPBox($(this));
         }
@@ -32,7 +32,7 @@ $(document).ready(function(){
 
     $('.connect-button').click(function(){
         if($account_connected == false) {
-            
+            if($('#usernameInput').val() != '') {
                 if($('#serverInput').val() != '') {
                     $('#m-accname').text($('#usernameInput').val());
                     $('#m-server').text($('#serverInput').val());
@@ -65,7 +65,9 @@ $(document).ready(function(){
                 } else {
                     sweetAlert("Error", "Please select your platform.", "error");
                 }
-            } 
+            } else {
+                sweetAlert("Error", "Please enter your username.", "error");
+            }
         } else {
             sweetAlert("Error", "You are already connected.", "error");
         }
@@ -90,6 +92,8 @@ $(document).ready(function(){
                     }
                 });
 
+            } else {
+                sweetAlert("Error", "Please select an amount of gems to generate.", "error");
             }
         }
     });
